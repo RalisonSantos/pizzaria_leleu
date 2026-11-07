@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pizzaria — Comanda Digital</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="brand-icon">🍕</span><div><strong>Pizzaria</strong><small>Comanda Digital</small></div></div>
+    <nav>
+      <button class="nav-btn active" data-page="comandas">Comandas</button>
+      <button class="nav-btn" data-page="historico">Histórico</button>
+    </nav>
+    <div class="storage-status"><span></span> Salvo nesta máquina</div>
+  </header>
+
+  <main>
+    <section id="page-comandas" class="page active">
+      <div class="page-head">
+        <div><h1>Comandas</h1><p>Escolha uma mesa e monte o pedido digitalmente.</p></div>
+        <button class="primary" id="newOrderBtn">＋ Nova comanda</button>
+      </div>
+
+      <div class="mesa-section"><div class="mesa-strip" id="mesaStrip"></div><button class="secondary add-mesa-btn" id="addMesaBtn">＋ Adicionar mesa</button></div>
+
+      <div class="order-layout">
+        <section class="products-panel">
+          <div class="category-tabs" id="categoryTabs"></div>
+          <div class="category-actions" id="categoryActions"></div>
+          <div class="products-heading"><h2 id="productsCategoryTitle">Produtos</h2><button class="secondary add-product-btn" id="addProductBtn">＋ Adicionar produto</button></div>
+          <div class="product-grid" id="productGrid"></div>
+        </section>
+
+        <aside class="order-panel">
+          <div class="order-title">
+            <div><span class="eyebrow">COMANDA ATUAL</span><h2 id="currentOrderTitle">Mesa 01</h2></div>
+            <button class="icon-btn" id="clearOrderBtn" title="Limpar comanda">🗑</button>
+          </div>
+          <div class="order-meta">
+            <div id="mesaIndicator" class="mesa-indicator"><i></i><b>01</b><span>Livre</span></div>
+          </div>
+          <div id="cart" class="cart"></div>
+          <div id="emptyCart" class="empty">Nenhum produto adicionado.<br><span>Clique nos produtos para montar a comanda.</span></div>
+          <div class="order-footer">
+            <div><span>Total</span><strong id="total">R$ 0,00</strong></div>
+            <div class="footer-actions">
+              <button class="confirm" id="confirmBtn">Confirmar pedido</button>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="page-historico" class="page">
+      <div class="page-head">
+        <div><h1>Histórico de pedidos</h1><p>Consulte, selecione e exclua comandas anteriores.</p></div>
+        <button class="danger" id="deleteSelectedBtn">Excluir selecionados</button>
+      </div>
+      <div class="history-toolbar">
+        <label class="check-label"><input type="checkbox" id="selectAll"> <span>Selecionar todos</span></label>
+        <div id="historyCount">0 pedidos</div>
+      </div>
+      <div id="historyList" class="history-list"></div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast"></div>
+
+  <template id="historyTemplate">
+    <article class="history-card">
+      <div class="history-check"><input type="checkbox" class="history-select"></div>
+      <div class="history-main">
+        <div class="history-top">
+          <div><strong class="history-mesa"></strong><span class="history-date"></span></div>
+          <span class="status"></span>
+        </div>
+        <div class="history-items"></div>
+      </div>
+      <div class="history-total"></div>
+      <div class="history-actions"><button class="small cancel-btn">Cancelar</button><button class="small edit-history-btn">Editar</button></div>
+    </article>
+  </template>
+
+  <script src="script.js"></script>
+</body>
+</html>
